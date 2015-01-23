@@ -1,0 +1,10 @@
+#!/bin/sh
+start=`date +%s`
+cd src/main/flex
+svn ci -m ""
+cd ../../../
+ssh aden@172.19.19.127 "/home/aden/traffic/sc"
+scp aden@172.19.19.127:/home/aden/traffic/com.dhcc.traffic/src/main/webapp/DTraffic.swf ./src/main/webapp/DTraffic.swf
+fend=`date +%s`
+t=`expr \( $fend - $start \)`
+echo 编译用时 $t 秒

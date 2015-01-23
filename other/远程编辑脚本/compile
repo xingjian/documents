@@ -1,0 +1,25 @@
+#!/bin/sh
+#export FLEX_HOME=/home/aden/apps/flex_sdk_4.5.0.17689
+export FLEX_HOME=/opt/flex
+app_home=`pwd`
+app_lib=$app_home/../flexlibs
+app_dir=$app_home/src/main/flex
+output_dir=$app_home/src/main/webapp
+
+classpath=
+
+for i in `find $app_lib -name "*.swc"` ; do
+        classpath=$classpath' '-library-path+=$i
+done
+
+cd $app_dir
+
+prot=mxml
+
+if [ -n "$2" ] ; then
+        prot=$2
+        if [ "$2" = "css" ] ; then
+                output_dir=/home/aden/dhccwork/Emergency/web/src/main/webapp/css
+        fi
+fi
+mxmlc +flexlib=$FLEX_HOME/frameworks -static-link-runtime-shared-libraries=false -compiler.debug=true -incremental=false -source-path $app_dir -compiler.locale en_US -locale zh_CN $classpath -compiler.fonts.local-fonts-snapshot $FLEX_HOME/frameworks/localFonts.ser -target-player=11.2 -swf-version=15 -output $output_dir/$1.swf $1.mxml

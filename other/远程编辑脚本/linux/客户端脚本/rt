@@ -1,0 +1,8 @@
+#!/bin/sh
+start=`date +%N`
+svn ci -m ""
+ssh aden@172.19.19.127 "/home/aden/traffic/st"
+scp aden@172.19.19.127:/home/aden/traffic/com.dhcc.traffic/src/main/webapp/Theme.swf ./src/main/webapp/Theme.swf
+fend=`date +%N`
+t=`expr \( $fend - $start \) / 1000000`
+echo 编译用时 $t 秒

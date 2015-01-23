@@ -1,0 +1,11 @@
+#!/bin/sh
+export FLEX_HOME=/opt/flex
+export PATH=/opt/flex/bin:$PATH
+export MAVEN_HOME=/opt/maven
+export PATH=/opt/maven/bin:$PATH
+export JAVA_HOME=/usr/java/jdk1.7.0_05
+export PATH=$JAVA_HOME/bin:$PATH
+cd /home/traffic/trunk
+svn update
+cd com.dhcc.traffic
+./compile DTraffic

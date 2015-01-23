@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /home/aden/traffic/com.dhcc.traffic
+svn update
+./compile Theme
